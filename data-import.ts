@@ -1,24 +1,28 @@
 // Helper: https://basarat.gitbook.io/typescript/main
 
 import { PhotoAlbum } from './interfaces'
-import photos from './private-data/photos'
-import DynamoDB from './dynamodb'
-import {v4 as uuidv4} from 'uuid'
 
-const reducer = (albums:any, currentAlbum:any)=>{ 
+export const importPhotoAlbums = (inputAlbums: Array<any>) => {
+    const reducer = (photoAlbums: any, currentAlbum: any) => {
 
-    if(!albums[currentAlbum.id]){
-        
+        if (photoAlbums[currentAlbum.id] == undefined) {
+            photoAlbums[currentAlbum.id] = {
+                id: currentAlbum.id,
+                albumName: currentAlbum.name,
+                location: currentAlbum.location,
+                photos: []
+            }
+        }
+
+        photoAlbums[currentAlbum.id].photos.push({
+            photoId: currentAlbum.photo_id,
+            description: currentAlbum.description
+        })
+
+        return photoAlbums
     }
-    currentVal[album.id] = {
-        'album_name': currentVal.name,
-        'location' : currentVal.location,
 
-    }
+    const result = inputAlbums.reduce(reducer, {})
+
+    return result
 }
-
-const dedupedAlbums = photos.reduce(reducer, {})
-
-
-let id = Math.round((new Date()).getTime())
-//DynamoDB.putItem(car1)
