@@ -9,14 +9,12 @@ let photoAlbum: PhotoAlbum = {
     pk: "album#12345",
     sk: "date#2010",
     albumName: "Tatton Park",
-    something: "else"
 }
 
 let photoAlbum2: PhotoAlbum = {
     pk: "album#1234567",
     sk: "date#2010",
     albumName: "Didsbury town center",
-    something: "boom boom boom"
 }
 
 let id = Math.round((new Date()).getTime())

@@ -10,9 +10,15 @@ export type DynamoDBItem = {
     sk: String
 }
 
+type Photo = {
+    url: String
+    description: String
+}
+
 export type PhotoAlbum  = {
     pk: string
     sk: string
     albumName?: string
-    something?: String
+    location?: String
+    photos: Array<Photo>
 }
