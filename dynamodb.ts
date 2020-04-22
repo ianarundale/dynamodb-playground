@@ -81,7 +81,6 @@ async function putItem(dynamoDBItem: DynamoDBItem): Promise<Boolean> {
         return false
     }
 
-    console.log(data)
     return true
 }
 
@@ -93,6 +92,50 @@ async function getItem(keys) {
     }
     try {
         const data = await docClient.get(params).promise()
+        return data
+    } catch (err) {
+        return err
+    }
+}
+
+async function queryCars() {
+    var params = {
+        TableName: table,
+        KeyConditionExpression: "#pk = :val",
+        ExpressionAttributeNames: {
+            "#pk": "pk"
+        },
+        ExpressionAttributeValues: {
+            ":val": "car"
+        }
+    }
+    try {
+        const data = await docClient.query(params).promise()
+        return data
+    } catch (err) {
+        return err
+    }
+}
+
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ExpressionAttributeNames.html
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults
+async function filterQuery() {
+    var params = {
+        TableName: table,
+        KeyConditionExpression: "#pk = :val",
+        FilterExpression: "contains(#author.firstname, :something)",
+        ExpressionAttributeNames: {
+            "#pk": "pk",
+            '#author': 'author'           
+        },                
+        ExpressionAttributeValues: {
+            ":val": "album",
+             ":something": "Jef",          
+        }
+    }
+    
+    try {
+        const data = await docClient.query(params).promise()
         return data
     } catch (err) {
         return err
@@ -145,7 +188,7 @@ async function getItem(keys) {
 // }
 
 
-export default { putItem, updateItem, getItem }
+export default { putItem, updateItem, getItem, queryCars, filterQuery }
 
 
 
