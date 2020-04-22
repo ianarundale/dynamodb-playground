@@ -19,6 +19,7 @@ let photoAlbum2: PhotoAlbum = {
 
 let id = Math.round((new Date()).getTime())
 
+
 let car1 = {
     pk: "car",
     sk: `${uuidv4()}`,
@@ -33,7 +34,6 @@ DynamoDB.filterQuery().then(res=>console.log(JSON.stringify(res)))
 //DynamoDB.putItem(car1)
 
 //DynamoDB.queryCars().then(res => console.log(sortCarsByMakeModel(res.Items)))
-
 
 
 function sortCarsByMakeModel(cars: []) {

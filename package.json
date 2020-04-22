@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --opts mocha.opts",
-    "test:watch": "mocha --opts mocha.opts --watch"
-    
-  },
-  "legacy-test": {
-    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register test/**/*.ts",
-    "test-dev": "nodemon --watch . --ext ts --exec \"mocha -r ts-node/register test/**/*.test.ts\""
+    "test": "mocha --require ts-node/register test/**/*.ts",    
+    "test:watch": "nodemon --watch . --ext ts --exec \"mocha --require ts-node/register test/**/*.ts\""    
   },
   "keywords": [],
   "author": "",
