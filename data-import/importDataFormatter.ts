@@ -47,13 +47,16 @@ export const importCarsFromJsonFile = (inputCars: Array<any>) => {
     return result
 }
 
-export const importNewsFromJsonFile = (inputNews: Array<any>) => {
-    const formatter = (inputNewsItem: any) => {
-        // No formatting
-        return inputNewsItem
+export const importMembersFromJsonFile = (inputMembers: Array<any>) => {
+    const formatter = (inputMember: any) => {
+        return {
+            firstName: inputMember['first_name'],
+            lastName: inputMember['last_name'],
+            membershipNo: inputMember['membership_no']
+        }
     }
 
-    const result = inputNews.map(formatter)
+    const result = inputMembers.map(formatter)
 
     return result
 }

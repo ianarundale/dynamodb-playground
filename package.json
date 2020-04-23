@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "import-runner": "tsc ./scripts/importRunner.ts; node --inspect ./scripts/importRunner.js; rm -r *.js",
     "test": "mocha --require ts-node/register test/**/*.ts",
     "test:watch": "nodemon --watch . --ext ts --exec \"mocha --require ts-node/register test/**/*.ts\""
   },

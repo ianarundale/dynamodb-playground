@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { photos as photoData } from '../private-data/photos'
 import { cars as carData } from '../private-data/cars'
 import { news as newsData } from '../private-data/news'
-import { importPhotoAlbumsFromJsonFile, importCarsFromJsonFile } from '../data-import/importDataFormatter'
+import { members as memberData } from '../private-data/members'
+import { importPhotoAlbumsFromJsonFile, importCarsFromJsonFile, importMembersFromJsonFile } from '../data-import/importDataFormatter'
 import { outputItemToDynamoDB } from '../data-import/outputObjectToDynamoDB'
 
 export const processPhotoAlbums = () => {
@@ -19,6 +20,13 @@ export const processCars = () => {
     const pk = "car"
     const skProducer = () => { return uuidv4() }
     const importItems = importCarsFromJsonFile(carData)
+    outputItemToDynamoDB({ pk, skProducer, dynamoDBHandler, importItems })
+}
+
+export const processMembers = () => {
+    const pk = "member"
+    const skProducer = () => { return uuidv4() }
+    const importItems = importMembersFromJsonFile(memberData)    
     outputItemToDynamoDB({ pk, skProducer, dynamoDBHandler, importItems })
 }
 

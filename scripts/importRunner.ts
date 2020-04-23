@@ -1,3 +1,3 @@
-import {processPhotoAlbums, processCars, processNews} from './jsonDataToDynamoDB'
+import {processPhotoAlbums, processCars, processNews, processMembers} from './jsonDataToDynamoDB'
 
-processCars()
+processMembers()
