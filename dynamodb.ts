@@ -10,9 +10,10 @@ config.update({
 var credentials = new SharedIniFileCredentials({ profile: 'personal-account' });
 config.credentials = credentials;
 
-var docClient = new DynamoDB.DocumentClient();
+var docClient = new DynamoDB.DocumentClient({convertEmptyValues:true});
 
 var table = "cccc_test";
+
 
 const isDynamoKey = (key: String) => {
     return key == "pk" || key == "sk"

@@ -1,8 +1,10 @@
 // Helper: https://basarat.gitbook.io/typescript/main
 
-import { PhotoAlbum } from './interfaces'
-
-export const importPhotoAlbums = (inputAlbums: Array<any>) => {
+/**
+ * Import data from file system format to PhotoAlbum format
+ * @param inputAlbums 
+ */
+export const importPhotoAlbumsFromJsonFile = (inputAlbums: Array<any>) => {
     const reducer = (photoAlbums: any, currentAlbum: any) => {
 
         if (photoAlbums[currentAlbum.id] == undefined) {
