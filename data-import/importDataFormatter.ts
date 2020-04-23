@@ -46,3 +46,14 @@ export const importCarsFromJsonFile = (inputCars: Array<any>) => {
 
     return result
 }
+
+export const importNewsFromJsonFile = (inputNews: Array<any>) => {
+    const formatter = (inputNewsItem: any) => {
+        // No formatting
+        return inputNewsItem
+    }
+
+    const result = inputNews.map(formatter)
+
+    return result
+}

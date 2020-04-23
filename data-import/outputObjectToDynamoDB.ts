@@ -9,10 +9,11 @@ export const outputItemToDynamoDB = ({pk, skProducer, importItems, dynamoDBHandl
     for (let key in importItems) {
         let item: Object = {
             pk,
-            sk: skProducer(),
+            sk: skProducer(importItems[key]),
             ...importItems[key]
         }        
 
+        console.log(item)
         dynamoDBHandler.putItem(item)        
     }
 }
